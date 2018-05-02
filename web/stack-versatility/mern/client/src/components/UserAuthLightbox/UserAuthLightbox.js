@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Modal, Button, Alert } from 'react-bootstrap';
-import SignInForm from './SignInForm/SignInForm';
-import SignUpForm from './SignUpForm/SignUpForm';
 import axios from 'axios';
 import 'bootstrap-css';
 
@@ -36,7 +34,7 @@ class UserAuthLightbox extends Component {
                 this.setState({submitDisabled: false})
             } 
         } else {
-            if (this.state.username !== "" && this.state.password !== "" && this.state.password == this.state.passwordRepeat){
+            if (this.state.username !== "" && this.state.password !== "" && this.state.password === this.state.passwordRepeat){
                 this.setState({submitDisabled: false})
             } 
         }
@@ -52,7 +50,7 @@ class UserAuthLightbox extends Component {
         console.log(e.target.innerHTML);
         let url = "http://localhost:3001/auth/"
 
-        e.target.innerHTML == "Sign In"
+        e.target.innerHTML === "Sign In"
             ? url += "signin/"
             : url += "signup/"
 
