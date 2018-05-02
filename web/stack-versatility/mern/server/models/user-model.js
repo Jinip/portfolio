@@ -7,8 +7,8 @@ let UserSchema = new Schema({
     password: {
         type: String
     },
-    success: {
-        type: Boolean
+    todos: {
+        type: [Schema.ObjectId]
     }
 })
 

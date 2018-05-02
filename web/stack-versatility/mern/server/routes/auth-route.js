@@ -31,9 +31,9 @@ router.route("/signup/")
                 let newUser = new User({username: req.body.username, password: req.body.password});
 
                 newUser.save((err, savedUser) => {
-                    if (err) return res.send(err);
-                    
-                    return res.send(savedUser);
+                    return err
+                        ? res.send(err)
+                        : res.send(savedUser)
                 });
             }
         })

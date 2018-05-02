@@ -53,10 +53,10 @@ class NavbarComponent extends Component {
 
     getUser = (e) => {
         e.preventDefault()
-        console.log(e.target.innerText)
+        
         let url = "http://localhost:3001/auth/"
 
-        e.target.innerText === "Sign In"
+        e.target.id === "signin"
             ? url += "signin/"
             : url += "signup/"
 
@@ -100,8 +100,8 @@ class NavbarComponent extends Component {
                                             }
                                         </FormGroup>
                                         { this.state.signIn
-                                            ? <Button disabled={this.state.submitDisabled} onClick={this.getUser}>Sign In</Button>
-                                            : <Button disabled={this.state.submitDisabled} onClick={this.getUser}>Sign Up</Button>
+                                            ? <Button id="signin" disabled={this.state.submitDisabled} onClick={this.getUser}>Sign In</Button>
+                                            : <Button id="signup" disabled={this.state.submitDisabled} onClick={this.getUser}>Sign Up</Button>
                                         }
                                         { this.state.signIn
                                             ? <a onClick={this.toggleFormContext}> Switch to Sign Up </a>
