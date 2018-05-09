@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Button, FormGroup, FormControl, Alert } from 'react-bootstrap';
-import navStyles from './Navbar.css'
+import styles from './Navbar.css.js'
 import axios from 'axios'
 
 class NavbarComponent extends Component {
@@ -11,6 +11,10 @@ class NavbarComponent extends Component {
         passwordRepeat: "",
         submitDisabled: true,
         alert: ""
+    }
+
+    componentDidMount() {
+        
     }
 
     toggleFormContext = () => {
@@ -76,9 +80,9 @@ class NavbarComponent extends Component {
     render() {
         return (
             <div>
-                <Navbar >
-                    <Navbar.Header>
-                        <Navbar.Brand style={this.styles.mongoGreen}>
+                <Navbar bsStyle={styles.mongoGreen}>
+                    <Navbar.Header >
+                        <Navbar.Brand>
                             MERN To-Do
                         </Navbar.Brand>
                         <Navbar.Toggle />
