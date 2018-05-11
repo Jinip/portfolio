@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import { Grid, Row, Col, Panel, Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap'
-//import 'bootstrap-css'
-//import './App.css'
-//import './Navbar.css'
+import './App.css'
 
 import axios from 'axios'
 
-//import Navbar from './components/Navbar/Navbar'
-import Navbar from './Navbar'
+import Navbar from './components/Navbar/Navbar'
 
 class App extends Component {
   state = {
@@ -99,7 +96,7 @@ class App extends Component {
               <Form >
                 <h2>New To-Do</h2>
                 <FormGroup>
-                  <ControlLabel className="mongoGreen">Title</ControlLabel>
+                  <ControlLabel>Title</ControlLabel>
                   <FormControl type="text" value={this.state.newTitle} onChange={this.newTitleOnChange}/>
                   <ControlLabel>Description</ControlLabel>
                   <FormControl type="text" value={this.state.newBody} onChange={this.newBodyOnChange}/>
