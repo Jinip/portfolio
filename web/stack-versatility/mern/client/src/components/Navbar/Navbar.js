@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Navbar, Button, FormGroup, FormControl, Alert } from 'react-bootstrap';
+import './Navbar.css'
 import axios from 'axios'
 
 class NavbarComponent extends Component {
@@ -10,10 +11,6 @@ class NavbarComponent extends Component {
         passwordRepeat: "",
         submitDisabled: true,
         alert: ""
-    }
-
-    componentDidMount() {
-        
     }
 
     toggleFormContext = () => {
@@ -62,10 +59,12 @@ class NavbarComponent extends Component {
 
         axios.post(url, {username: this.state.username, password: this.state.password})
             .then(res => {
-                console.log(res.data)
                 if (res.data.message) return this.setState({alert: res.data.message});
 
                 localStorage.setItem("todoUser", res.data.username);
+                this.setState({username: ""})
+                this.setState({password: ""})
+                this.setState({passwordRepeat: ""})
                 this.props.signIn();
             })
             .catch(err => {
@@ -77,9 +76,9 @@ class NavbarComponent extends Component {
     render() {
         return (
             <div>
-                <Navbar>
+                <Navbar >
                     <Navbar.Header>
-                        <Navbar.Brand>
+                        <Navbar.Brand >
                             MERN To-Do
                         </Navbar.Brand>
                         <Navbar.Toggle />
@@ -92,10 +91,10 @@ class NavbarComponent extends Component {
                                 ? (
                                     <div>
                                         <FormGroup>
-                                            <FormControl type="text" placeholder="username" onChange={this.usernameOnChange} value={this.state.username}/>
-                                            <FormControl type="text" placeholder="password" onChange={this.passwordOnChange} value={this.state.password}/>
+                                            <FormControl type="text" placeholder="username" value={this.state.username} onChange={this.usernameOnChange} />
+                                            <FormControl type="password" placeholder="password" value={this.state.password} onChange={this.passwordOnChange} />
                                             { !this.state.signIn 
-                                                ? <FormControl type="text" placeholder="repeat password" onChange={this.passwordRepeatOnChange} value={this.state.passwordRepeat}/>
+                                                ? <FormControl type="password" placeholder="repeat password" value={this.state.passwordRepeat} onChange={this.passwordRepeatOnChange} />
                                                 : <div></div>
                                             }
                                         </FormGroup>
@@ -108,7 +107,7 @@ class NavbarComponent extends Component {
                                             : <a onClick={this.toggleFormContext}> Switch to Sign In </a>
                                         }
                                     </div>
-                                ) : <Button onClick={this.props.signOut}>Sign Out</Button>
+                                ) : <Button className="nodeGreen" onClick={this.props.signOut}>Sign Out</Button>
                             }
                         </Navbar.Form>
                     </Navbar.Collapse>
